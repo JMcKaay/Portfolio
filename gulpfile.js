@@ -1,14 +1,19 @@
-const { src, dest, watch, series } = require('gulp');
+const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps');
 
-function buildStyles() {
-    return src('style.scss') // Watch the correct source SASS file
-        .pipe(sass().on('error', sass.logError)) // Handle errors gracefully
-        .pipe(dest('dist/css')); // Output directory
-}
+gulp.task('buildStyles', function() {
+    return gulp.src('style.scss') // Path to your main SCSS file
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            includePaths: ['node_modules/bootstrap/scss'] // Path to Bootstrap's SCSS files
+        }).on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist/css')); // Output directory for compiled CSS files
+});
 
-function watchTask() {
-    watch(['style.scss'], buildStyles); // Watch all .sass files in the src/scss directory
-}
+gulp.task('watchTask', function() {
+    gulp.watch('style.scss', gulp.series('buildStyles'));
+});
 
-exports.default = series(buildStyles, watchTask);
+gulp.task('default', gulp.series('buildStyles', 'watchTask'));

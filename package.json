@@ -5,5 +5,8 @@
     "gulp-sass": "^5.1.0",
     "sass": "^1.77.5",
     "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "gulp-sourcemaps": "^2.6.5"
   }
 }
