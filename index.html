@@ -6,15 +6,86 @@
 <link rel="stylesheet" href="dist/css/style.css">
 <style>
 </style>
-<script src="index.js"></script>
-<body>
 
-<section>
-    <div id ="text">Hi I am James</div>
-    <div id ="text">An Aspiring Front End Developer</div>
+<body>
+<div id="animated-background" class="animated-background animated-background--red" data-color="red">
+<canvas id="can0" width="1680" height="635"></canvas>
+
+
+<!-- Nav Bar -->
+    <div data-spy="affix" id="dot-nav">
+    	<ul>
+	      <li class="awesome-tooltip active" title="Home"><a href="#home"></a></li>
+	      <li class="awesome-tooltip" title="About"><a href="#about"></a></li>
+	      <li class="awesome-tooltip" title="Projects"><a href="#projects"></a></li>
+	      <li class="awesome-tooltip" title="Contact"><a href="#contact"></a></li>
+	    </ul>
+	</div>
+    
+    <div id="main" class="container">
+    	<section id="home">
+           <article>
+               <div class="row">
+                   <div class="col-md-12">
+                    <div id ="text">Hi I am James</div>
+                    <div id ="text">An Aspiring Front End Developer</div>
+                    <canvas id="c" class="col-12"></canvas>
+                   </div>
+               </div>
+           </article>           
+    	</section>
+
+
+
+        <section id="about">
+           <article>
+               <div class="row">
+                   <div class="col-md-12">
+                    <h1>About Section <small>Secondary text</small></h1>
+                       <p>
+                        This is a content.                                
+                       </p>
+                   </div>
+               </div>
+           </article>           
+        </section>
+        <section id="projects">
+           <article>
+               <div class="row">
+                   <div class="col-md-12">
+                    <h1>Projects Section <small>Secondary text</small></h1>
+                       <p>
+                        This is a content.                                
+                       </p>
+                   </div>
+               </div>
+           </article>           
+        </section>
+        <section id="contact">
+           <article>
+               <div class="row">
+                   <div class="col-md-12">
+                    <h1>Contact Section <small>Secondary text</small></h1>
+                       <p>
+                        This is a content.                                
+                       </p>
+                   </div>
+               </div>
+           </article>           
+        </section>        
+    </div>
+
+  
+  <!-- Header Intro -->
+
+
+   
 </section>
 
 
+
+<script src="index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 </html>
