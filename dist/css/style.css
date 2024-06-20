@@ -11950,6 +11950,7 @@ textarea.form-control-lg {
 /* Dark Grey */
 /* Grey */
 /* Purple */
+/* Animation Styles */
 /* reset styles */
 * {
   color: inherit;
@@ -12016,7 +12017,7 @@ canvas {
 #text:after {
   content: attr(data-text);
   visibility: visible;
-  color: #ed3833;
+  color: #7971ea;
   position: absolute;
   left: 0;
   display: block;
@@ -12026,13 +12027,13 @@ canvas {
 }
 
 #text:before {
-  color: #ed3833;
+  color: #7971ea;
   clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
   animation: move-left 2.5s cubic-bezier(0.6, 0, 0.15, 1), blur 1s linear 3s forwards;
 }
 
 #text:after {
-  color: #f59391;
+  color: #cdcaf7;
   clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
   animation: move-right 3s cubic-bezier(0.6, 0, 0.15, 1), blur 1s linear 3s forwards;
 }
@@ -12081,6 +12082,11 @@ canvas {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.square {
+  border-radius: 10px;
+  background-color: rgb(120, 112, 235);
 }
 
 body, html {

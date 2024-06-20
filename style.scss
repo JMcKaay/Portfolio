@@ -143,7 +143,7 @@ $btn-padding-y:           .5rem;
 $btn-line-height:         $base-line-height;
 $btn-transtion:           all, .2s ease-in-out;
 
-
+/* Animation Styles */
 
 /* reset styles */
 
@@ -153,7 +153,7 @@ $btn-transtion:           all, .2s ease-in-out;
     padding: 0;
   }
   
-  body {
+body {
     font-family: $font-family-apple;
     color: $font-lightpurple;
     background-color: $brand-primary
@@ -178,10 +178,11 @@ $btn-transtion:           all, .2s ease-in-out;
   }
 
 
+  
 // Section Header Design
 
 $background:  $brand-primary;
-$colorOne :   #ed3833;
+$colorOne :   $brand-third;
 $mainColor:   $brand-third;
 html, body { 
   background: $background;
@@ -290,6 +291,18 @@ canvas {
     appearance: none;
 }
 
+//about
+.square {
+  border-radius: 10px;
+  background-color: rgb(120, 112, 235);
+}
+
+
+
+
+
+
+
 
 //Navigation Bar
 
@@ -355,3 +368,6 @@ top:-5px;
   border-bottom:5px solid transparent;
   border-left:5px solid $brand-third;
 }
+
+
+ 
