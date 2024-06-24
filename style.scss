@@ -1,373 +1,224 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+// Import Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-// Import Bootstrap
+// Import Bootstrap (assuming node_modules/bootstrap/scss/bootstrap is correct)
 @import 'node_modules/bootstrap/scss/bootstrap';
 
-//other styles and variables
+// Variables
+$brand-primary:   #222831;
+$brand-secondary: #393e46;
+$brand-third:     #7971ea;
 
+$font-darkpurple:  #3a316e;
+$font-lightpurple: #485791;
+$font-blue:        #55829c;
+$font-green:       #96c99c;
 
-/* Layouts */
+$font-family-apple: 'apple-system', 'system-ui', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+$font-family-roboto: 'Roboto Slab', serif;
+$font-family-base: $font-family-apple;
 
-.section {
-  display: block;
+$font-base:   1rem;
+$font-large:  1.25rem;
+$font-xlg:    2rem;
+$font-weight-normal: normal;
+$base-line-height: 1.25;
+
+$border-width: 1px;
+$border-radius: 10px;
+
+$btn-main-color: $brand-third;
+$btn-primary-bg: $brand-third;
+$btn-dark-bg: $brand-primary;
+$btn-third-bg: $brand-secondary;
+$btn-border-primary: $brand-primary;
+$btn-border-dark: $brand-primary;
+$btn-border-third: $brand-third;
+$btn-padding-x: 1rem;
+$btn-padding-y: 0.5rem;
+$btn-line-height: $base-line-height;
+$btn-transition: all 0.2s ease-in-out;
+
+// Reset styles
+* {
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-  .row {
+body {
+  font-family: $font-family-apple;
+  color: $font-lightpurple;
+  background-color: $brand-primary;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dotted #efefef;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Navigation Bar
+.navbar {
+  margin: 20px 0 0;
+  color: #fff;
+}
+
+// Sections
+.section {
+  display: block;
+  padding: 100px 0; /* Adjust as needed to increase section size */
+}
+
+.row {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  align-items: center;}
-
-.row::after {
-  display: table;
-  clear: both;}
-
-.col-1 {
-  width: 8.33% }
-.col-2 {
-  width: 16.66% }
-.col-3 {
-  width: 25% }
-.col-4 {
-  width: 33.33%}
-.col-5 {
-  width: 41.66%}
-.col-6 {
-  width: 50%}
-.col-7 {
-  width: 58.33%}
-.col-8 {
-  width: 66.66%}
-.col-9 {
-  width: 75%}
-.col-10{
-  width: 83.33%}
-.col-11{
-  width: 91.66%}
-.col-12{
-  width: 100%}
-
-*{
-  box-sizing: border-box;}
-
-//theme colors
-
-.first-color { 
-	background: #eeeeee; 
-}
-	
-.second-color { 
-	background: #7971ea; 
+  align-items: center;
 }
 
-.third-color { 
-	background: #393e46; 
-}
+.col-1 { width: 8.33%; }
+.col-2 { width: 16.66%; }
+.col-3 { width: 25%; }
+.col-4 { width: 33.33%; }
+.col-5 { width: 41.66%; }
+.col-6 { width: 50%; }
+.col-7 { width: 58.33%; }
+.col-8 { width: 66.66%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.66%; }
+.col-12 { width: 100%; }
 
-.fourth-color { 
-	background: #222831; 
-}
-
-//Text Colors
-
-.first-color { 
-	background: #96c99c; 
-}
-	
-.second-color { 
-	background: #55829c; 
-}
-
-.third-color { 
-	background: #485791; 
-}
-
-.fourth-color { 
-	background: #3a316e; 
-}
-
-
-//Variables
-
-// Global variables
-
-//Colors
-$brand-primary:     #222831;    
-$brand-secondary:   #393e46;
-$brand-third:       #7971ea; //Also Text
-/* Dark Grey */
-/* Grey */
-/* Purple */
-$font-darkpurple:         #3a316e; 
-$font-lightpurple:        #485791; 
-$font-blue:               #55829c; 
-$font-green:              #96c99c;
-
-
-//B&W
-
-$black:               #000;
-$white:               #fff;
-
-
-//fonts
-$font-family-apple:       apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
-$font-family-roboto:     'Roboto Slab', serif;
-$font-family-base:        $font-family-apple;
-
-
-$font-base:              1rem;
-$font-large:             1.25rem;
-$font-xlg:               2rem;
-
-$font-weight-normal:     normal;
-$base-line-height:       1.25;
-
-//Border
-$border-width:            1px;
-$border-radius:           10px;
-
-//Button
-$btn-main-color:          $brand-third ;
-
-$btn-primary-bg:          $brand-third ;
-$btn-dark-bg:             $brand-primary;
-$btn-third-bg:            $brand-secondary;
-
-$btn-border-primary:      $brand-primary;
-$btn-border-dark:         $brand-primary;
-$btn-border-third:        $brand-third;
-
-$btn-padding-x:           1rem;
-$btn-padding-y:           .5rem;
-$btn-line-height:         $base-line-height;
-$btn-transtion:           all, .2s ease-in-out;
-
-/* Animation Styles */
-
-/* reset styles */
-
-* {
-    color: inherit;
-    margin: 0;
-    padding: 0;
+// Animations
+@keyframes active {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+    box-shadow: 0 0 0 2px rgb(236, 232, 232), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
   }
-  
-body {
-    font-family: $font-family-apple;
-    color: $font-lightpurple;
-    background-color: $brand-primary
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
   }
-  
-  ul {
-    padding: 0;
-    list-style-type: none;
+  to {
+    opacity: 1;
+    background: $brand-third;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 1px 1px #3851bc, 0 0 0 1px rgba(255, 255, 255, 0.5);
   }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  hr {
-    border: 0;
-    border-top: 1px dotted #efefef;
-  }
-  
-  img {
-    max-width: 100%;
-  }
-
-
-  
-// Section Header Design
-
-$background:  $brand-primary;
-$colorOne :   $brand-third;
-$mainColor:   $brand-third;
-html, body { 
-  background: $background;
-  cursor: pointer;
-  height: 100%; 
-  display: flex; 
-}
-body { 
-  margin: auto; 
-
 }
 
-
-canvas {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
+// Wiggle animation
+.wiggle {
+  font-size: 5rem;
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 5px;
+  transition: color 0.3s ease;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:800');
-
-#text {
-  font-family: $font-family-apple;
-  font-weight: 800;
-  font-size: 5vw;
-  transform:skewY(-5deg);
-  visibility:hidden;
-  color:$mainColor;
-  animation : display 1s cubic-bezier(.6,.0,.15,1) 4s forwards;
-  position: relative;
-  }
-  
-  #text:before,
-  #text:after {
-    content: attr(data-text);
-    visibility: visible;
-    color: $colorOne;
-    position: absolute;
-    left: 0;
-    display: block;
-    top: auto;
-    bottom: 0;
-    z-index: 3;
-  }
-  
-  #text:before {
-    color: lighten($colorOne,0%);
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-    animation: move-left 2.5s cubic-bezier(.6,.0,.15,1),
-               blur 1s linear 3s forwards;
-  }
-  
-  #text:after {
-    color: lighten($colorOne,20%);
-    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
-    animation: move-right 3s cubic-bezier(.6,.0,.15,1),
-               blur 1s linear 3s forwards;
-  }
-  
-  @keyframes move-left{
-    from{
-      transform:translate(-1000%,-120%);
-    }50%{
-      transform:translate(0%,-120%);
-    }
-    100%{
-      transform:translate(0%,0%);
-    }
-  }
-  
-  @keyframes move-right{
-    from{
-      transform:translate(1000%,80%);
-    }50%{
-      transform:translate(0%,80%);
-    }100%{
-      transform:translate(0%,0%);
-    }
-  }
-  
-  @keyframes blur{
-    from{
-      opacity:1;
-    }
-    to{
-      opacity: 0;
-    }
-  }
-  
-  @keyframes display{
-    from{
-      visibility: hidden;
-      transform:skewY(-5deg) scale(0);
-    }to{
-      visibility: visible;
-      transform:skewY(-5deg) scale(1);
-    }
-  }
- 
-  .element {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.wiggle:hover {
+  color: $brand-third;
+  animation: stretch-wiggle 0.6s;
 }
 
-//about
-.square {
-  border-radius: 10px;
-  background-color: rgb(120, 112, 235);
+@keyframes stretch-wiggle {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  40% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
-
-
-
-
-
-
-
-//Navigation Bar
-
-
-
-body, html {
-  height: 100%;    
-}
-#main {
-  height: 100%;
-}
-section {
-  padding: 13% 0;
-height: 100%;
-}
-#dot-nav{    
+// Navigation Dots
+#nav-dots {
+  display: flex;
   position: fixed;
-  right: 10px;
-  top: 50%;
-  margin-top: -50px;
-  height: 100px;
-  z-index: 999;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-#dot-nav ul {
-list-style: none;
-margin:0;
-padding: 0;
-}
-#dot-nav li {
-position: relative;
-background-color: #bdc3c7;
-border:3px solid #bdc3c7;
-border-radius: 15px 15px 15px 15px;
-cursor: pointer;
-padding: 5px;
-height: 10px;
-margin: 10px 10px 0px 0px;
-width: 10px;
-vertical-align:bottom;
-}
-#dot-nav li.active, #dot-nav li:hover {
-background-color: $brand-third;
+#nav-dots ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px 0 0 15px;
+  margin: auto;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  list-style: none;
 }
 
-#dot-nav a {
-outline: 0;
-vertical-align:top;
-margin: 0px 0px 0px 25px;
-position: relative;
-top:-5px;
+.nav__dot {
+  cursor: pointer;
+  background: #2793e8;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin: 10px auto;
 }
-.awesome-tooltip + .tooltip > .tooltip-inner {
-  /*background-color: #8e44ad;*/ 
-  color: #f5f5f5; 
-  border: 1px solid $brand-third; 
-}
-.awesome-tooltip + .tooltip.left > .tooltip-arrow{
-  top:50%;
-  right:0;
-  margin-top:-5px;
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-  border-left:5px solid $brand-third;
+
+.nav__dot--active {
+  animation: active 1s ease-in-out 75ms both;
 }
 
 
- 
+//Header
+#type-text{
+  font-size: 50px;
+  color: $brand-third;
+}
+
+
+
+
+
+// About, Skills, Projects, Contact sections
+#about { 
+  background-color: #96c99c; 
+  height: 600px; /* Increase section height */
+}
+
+#skills { 
+  background-color: #55829c; 
+  height: 600px; /* Increase section height */
+}
+
+#projects { 
+  background-color: #2793e8; 
+  height: 600px; /* Increase section height */
+}
+
+#contact { 
+  background-color: #559c76; 
+  height: 600px; /* Increase section height */
+}
+
