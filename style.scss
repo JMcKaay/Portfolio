@@ -48,7 +48,7 @@ $btn-transition: all 0.2s ease-in-out;
 }
 
 body {
-  font-family: $font-family-apple;
+  font-family: "Plus Jakarta Sans", sans-serif;
   color: $font-lightpurple;
   background-color: $brand-primary;
 }
@@ -229,12 +229,93 @@ img {
   }
 }
 
+#headerIMG{
+  max-width: 350px; /* Adjust as needed */
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  height: auto; /* Allow the height to be dynamic */
+  padding: 20px; /* Add padding for better spacing */
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: bold;
+}
 
-#about { 
-  background-color: #96c99c; 
-  height: 700px; /* Increase section height */
+#aboutMePara {
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+
+#aboutBG {
+  background: rgb(2,0,36);
+  background: linear-gradient(172deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
+}
+
+/* For the images to float right with clear background */
+#gsdPic1, #gsdPic2 {
+  float: none;
+  margin-left: 0px; /* Space between the text and the image */
+  margin-bottom: 20px; /* Space between the images */
+  max-width: 350px; /* Adjust as needed */
+  display: inline-block;
+  background-color: transparent; /* Clear background */
+  border: none; /* Remove border */
+  border-radius: 40%;;
+  padding: 0;
+}
+
+#gsdPic2 {
+  height: 300px;
+  width: 300px;
+}
+
+/* Clearfix to contain floated elements */
+#about::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  #gsdPic1, #gsdPic2 {
+    float:none;
+    display: inline-flex;
+    margin: 20px auto; /* Center images on small screens */
+    max-width: 100%; /* Make images responsive */
+    height: 90px;
+    width: 90px;
+  }
+
+  /* Ensure the text content does not overlap with images */
+  #titleHeader p {
+    margin-bottom: 20px;
+  }
 }
 
 #skills { 
