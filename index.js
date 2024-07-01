@@ -439,3 +439,15 @@ const observer = new IntersectionObserver ((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
+//Skills Button aniamtion
+document.addEventListener('scroll', function () {
+  const scrollTop = window.scrollY;
+  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = scrollTop / documentHeight;
+
+  const primaryCarousel = document.querySelector('.carousel-primary');
+
+  const primaryPosition = 125 - (scrollPercent * 200);  // Range from 100% to -100%
+
+  primaryCarousel.style.left = primaryPosition + '%';
+});

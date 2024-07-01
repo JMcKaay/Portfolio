@@ -5,6 +5,7 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12142,8 +12143,86 @@ img {
   }
 }
 #skills {
-  background-color: #55829c;
   height: 700px; /* Increase section height */
+}
+
+#skillsBG {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(9deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
+}
+
+#andHeader {
+  color: rgb(57, 108, 57);
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-primary {
+  top: 26%;
+  left: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping */
+  justify-content: center; /* Center the content horizontally */
+}
+
+.carousel-primary button {
+  margin: 2px 10px; /* Add horizontal margin between buttons */
+  width: 125px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
+  border-radius: 14px;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.carousel-primary img {
+  margin: 2px 10px; /* Add horizontal margin between buttons */
+  width: 100px; /* Set a fixed width */
+  height: 100px; /* Set a fixed height */
+  border-radius: 14px;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.skillsBTN {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(349deg, #bababa 7%, #666666 100%);
+  padding: 10px 30px;
+  border: solid #616161 2px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  border-radius: 23px;
+  transition: 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.skillsBTN:hover {
+  transition: 1000ms;
+  padding: 10px 26px;
+  transform: translateY(0px);
+  background: linear-gradient(349deg, #bababa 7%, #666666 100%);
+  color: #e8e7e7;
+  border: solid 2px #cbc9ff;
+}
+
+#skillBlock {
+  background: rgb(65, 72, 82);
+  background: linear-gradient(193deg, rgb(65, 72, 82) 0%, rgb(58, 49, 110) 30%, rgb(34, 40, 49) 100%);
 }
 
 #projects {
