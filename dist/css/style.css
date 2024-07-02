@@ -12053,8 +12053,8 @@ img {
 
 @media (max-width: 768px) {
   #titleHeader h1, #titleHeader .h1 {
-    font-size: 1.5rem; /* Adjust font size for smaller screens */
     text-align: center;
+    font-size: 50px;
   }
 }
 #headerIMG {
@@ -12134,16 +12134,23 @@ img {
     display: inline-flex;
     margin: 20px auto; /* Center images on small screens */
     max-width: 100%; /* Make images responsive */
-    height: 90px;
-    width: 90px;
+    height: 150px;
+    width: 150px;
   }
   /* Ensure the text content does not overlap with images */
+  #titleHeader h1, #titleHeader .h1 {
+    font-size: 50px;
+  }
   #titleHeader p {
     margin-bottom: 20px;
   }
 }
 #skills {
   height: 700px; /* Increase section height */
+}
+
+.skills-container {
+  width: 50%;
 }
 
 #skillsBG {
@@ -12159,10 +12166,11 @@ img {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  flex: 1; /* Allow it to take up available space */
 }
 
 .carousel-primary {
-  top: 26%;
+  top: 12%;
   left: 100%;
   width: 100%;
   overflow: hidden;
@@ -12171,16 +12179,6 @@ img {
   display: flex;
   flex-wrap: wrap; /* Enable wrapping */
   justify-content: center; /* Center the content horizontally */
-}
-
-.carousel-primary button {
-  margin: 2px 10px; /* Add horizontal margin between buttons */
-  width: 125px; /* Set a fixed width */
-  height: 50px; /* Set a fixed height */
-  border-radius: 14px;
-  display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
 }
 
 .carousel-primary img {
@@ -12193,38 +12191,247 @@ img {
   justify-content: center; /* Center content horizontally */
 }
 
-.skillsBTN {
-  font-family: Roboto, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #ffffff;
-  background: linear-gradient(349deg, #bababa 7%, #666666 100%);
-  padding: 10px 30px;
-  border: solid #616161 2px;
-  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
-  border-radius: 23px;
-  transition: 1000ms;
-  transform: translateY(0);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-}
-
-.skillsBTN:hover {
-  transition: 1000ms;
-  padding: 10px 26px;
-  transform: translateY(0px);
-  background: linear-gradient(349deg, #bababa 7%, #666666 100%);
-  color: #e8e7e7;
-  border: solid 2px #cbc9ff;
-}
-
 #skillBlock {
-  background: rgb(65, 72, 82);
   background: linear-gradient(193deg, rgb(65, 72, 82) 0%, rgb(58, 49, 110) 30%, rgb(34, 40, 49) 100%);
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px 0px rgb(58, 49, 110);
+  flex: 1; /* Allow it to take up available space */
+  margin-top: 50px; /* Adjust as needed */
+  padding: 20px; /* Add padding */
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 0 15px;
+  }
+  .skills-container h1, .skills-container .h1 {
+    font-size: 50px;
+  }
+  .grid {
+    display: block;
+  }
+  .carousel-primary {
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: relative;
+  }
+  .carousel-primary img {
+    width: 75px; /* Adjust size for mobile */
+    height: 75px; /* Adjust size for mobile */
+  }
+  .scroll-container {
+    height: auto;
+    overflow: auto;
+  }
+}
+.fakeButtons {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  position: relative;
+  top: 6px;
+  left: 6px;
+  background-color: #ff3b47;
+  border-color: #9d252b;
+  display: inline-block;
+}
+
+.fakeMinimize {
+  left: 11px;
+  background-color: #ffc100;
+  border-color: #9d802c;
+}
+
+.fakeZoom {
+  left: 16px;
+  background-color: #00d742;
+  border-color: #049931;
+}
+
+.fakeMenu {
+  width: 100%; /* Make the fake menu take up the full width of the parent */
+  box-sizing: border-box;
+  height: 25px;
+  background-color: #bbb;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.fakeScreen {
+  background-color: #151515;
+  box-sizing: border-box;
+  width: 100%; /* Make the fake screen take up the full width of the parent */
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.fakeScreen p {
+  position: relative;
+  text-align: left;
+  font-size: 1.25em;
+  font-family: monospace;
+  white-space: normal;
+  overflow: hidden;
+  width: 100%; /* Make the text take up the full width of the parent */
+}
+
+span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.line1 {
+  color: #9CD9F0;
+  -webkit-animation: type 0.5s 1s steps(20, end) forwards;
+  -moz-animation: type 0.5s 1s steps(20, end) forwards;
+  -o-animation: type 0.5s 1s steps(20, end) forwards;
+  animation: type 0.5s 1s steps(20, end) forwards;
+}
+
+.cursor1 {
+  -webkit-animation: blink 1s 2s 2 forwards;
+  -moz-animation: blink 1s 2s 2 forwards;
+  -o-animation: blink 1s 2s 2 forwards;
+  animation: blink 1s 2s 2 forwards;
+}
+
+.line2 {
+  color: #CDEE69;
+  -webkit-animation: type 0.5s 4.25s steps(20, end) forwards;
+  -moz-animation: type 0.5s 4.25s steps(20, end) forwards;
+  -o-animation: type 0.5s 4.25s steps(20, end) forwards;
+  animation: type 0.5s 4.25s steps(20, end) forwards;
+}
+
+.cursor2 {
+  -webkit-animation: blink 1s 5.25s 2 forwards;
+  -moz-animation: blink 1s 5.25s 2 forwards;
+  -o-animation: blink 1s 5.25s 2 forwards;
+  animation: blink 1s 5.25s 2 forwards;
+}
+
+.line3 {
+  color: #E09690;
+  -webkit-animation: type 0.5s 7.5s steps(20, end) forwards;
+  -moz-animation: type 0.5s 7.5s steps(20, end) forwards;
+  -o-animation: type 0.5s 7.5s steps(20, end) forwards;
+  animation: type 0.5s 7.5s steps(20, end) forwards;
+}
+
+.cursor3 {
+  -webkit-animation: blink 1s 8.5s 2 forwards;
+  -moz-animation: blink 1s 8.5s 2 forwards;
+  -o-animation: blink 1s 8.5s 2 forwards;
+  animation: blink 1s 8.5s 2 forwards;
+}
+
+.line4 {
+  color: #fff;
+  -webkit-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -moz-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -o-animation: type 0.5s 10.75s steps(20, end) forwards;
+  animation: type 0.5s 10.75s steps(20, end) forwards;
+}
+
+.cursor4 {
+  -webkit-animation: blink 1s 11.5s infinite;
+  -moz-animation: blink 1s 8.5s infinite;
+  -o-animation: blink 1s 8.5s infinite;
+  animation: blink 1s 8.5s infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+@-moz-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+@-o-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+@keyframes type {
+  to {
+    width: 17em;
+  }
+}
 #projects {
   background-color: #2793e8;
   height: 700px; /* Increase section height */

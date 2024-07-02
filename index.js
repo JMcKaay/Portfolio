@@ -447,7 +447,7 @@ document.addEventListener('scroll', function () {
 
   const primaryCarousel = document.querySelector('.carousel-primary');
 
-  const primaryPosition = 125 - (scrollPercent * 200);  // Range from 100% to -100%
+  const primaryPosition = 100 - (scrollPercent * 200);  // Range from 100% to -100%
 
   primaryCarousel.style.left = primaryPosition + '%';
 });
