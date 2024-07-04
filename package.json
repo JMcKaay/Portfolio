@@ -3,10 +3,10 @@
     "bootstrap": "^5.3.3",
     "gulp": "^5.0.0",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.77.5",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "sass": "^1.77.6"
   }
 }

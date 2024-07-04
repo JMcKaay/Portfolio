@@ -379,6 +379,7 @@ img {
   flex: 1; /* Allow it to take up available space */
   margin-top: 50px; /* Adjust as needed */
   padding: 20px; /* Add padding */
+  height: 600px;
 }
 
 /* Media Queries */
@@ -442,13 +443,13 @@ img {
   width: 100%; /* Make the fake menu take up the full width of the parent */
   box-sizing: border-box;
   height: 25px;
-  background-color: #bbb;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
 
 .fakeScreen {
-  background-color: #151515;
+  background-color: linear-gradient(193deg, rgba(65,72,82,1) 0%, rgba(58,49,110,1) 30%, rgba(34,40,49,1) 100%);
+  border: #000;
   box-sizing: border-box;
   width: 100%; /* Make the fake screen take up the full width of the parent */
   padding: 20px;
@@ -627,9 +628,53 @@ span {
   }
 }
 
+#projectsBG{
+  background: rgb(2,0,36);
+  background: linear-gradient(159deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
+
+}
+
 #projects { 
-  background-color: #2793e8; 
+
   height: 700px; /* Increase section height */
+
+}
+
+#panelCards {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  -webkit-transition: all 700ms ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
 }
 
 
