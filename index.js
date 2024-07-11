@@ -439,6 +439,21 @@ const observer = new IntersectionObserver ((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
+const observer2 = new IntersectionObserver ((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry)
+    if (entry.isIntersecting){
+      entry.target.classList.add('show2');
+    } else {
+      entry.target.classList.remove('show2');
+    }
+  });
+});
+
+const hiddenElements2 = document.querySelectorAll('.hidden2');
+hiddenElements2.forEach((el) => observer2.observe(el));
+
+
 //Skills Button aniamtion
 document.addEventListener('scroll', function () {
   const scrollTop = window.scrollY;
@@ -447,7 +462,7 @@ document.addEventListener('scroll', function () {
 
   const primaryCarousel = document.querySelector('.carousel-primary');
 
-  const primaryPosition = 100 - (scrollPercent * 200);  // Range from 100% to -100%
+  const primaryPosition = 110 - (scrollPercent * 200);  // Range from 100% to -100%
 
   primaryCarousel.style.left = primaryPosition + '%';
 });
@@ -468,4 +483,6 @@ function removeActiveClasses() {
         panel.classList.remove('active')
     })
 }
+
+
 
