@@ -370,6 +370,10 @@ const VND = ((document, window) => {
     hideOnScreenLess: 640,
   })
 
+
+ //NavBar Indicator 
+ 
+
 //Main "Hi I am James"
 
 async function init () {
@@ -455,17 +459,6 @@ hiddenElements2.forEach((el) => observer2.observe(el));
 
 
 //Skills Button aniamtion
-document.addEventListener('scroll', function () {
-  const scrollTop = window.scrollY;
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = scrollTop / documentHeight;
-
-  const primaryCarousel = document.querySelector('.carousel-primary');
-
-  const primaryPosition = 110 - (scrollPercent * 200);  // Range from 100% to -100%
-
-  primaryCarousel.style.left = primaryPosition + '%';
-});
 
 
 //Projects

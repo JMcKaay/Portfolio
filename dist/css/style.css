@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -11857,6 +11857,15 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: #485791;
   background-color: #222831;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(355deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
+  /* Set a specific height */
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 ul {
@@ -11960,11 +11969,9 @@ img {
 }
 .wiggle {
   font-size: 5rem;
-  font-weight: 500;
   text-shadow: 2px 2px 5px rgba(79, 85, 79, 0.7);
   color: #ffffff;
   display: inline-block;
-  margin-right: 1px;
   transition: color 0.3s ease;
 }
 
@@ -12026,15 +12033,49 @@ img {
   animation: active 1s ease-in-out 75ms both;
 }
 
+#nav-dots::before, #nav-dots::after {
+  content: "";
+  width: 2px;
+  height: 150px;
+  display: block;
+  background-color: white;
+  position: absolute;
+  right: 150%;
+}
+
+#nav-dots::before {
+  top: 0;
+}
+
+#nav-dots::after {
+  bottom: 0;
+}
+
+.myEmail {
+  position: fixed;
+  right: 2.5%;
+  bottom: 25%;
+  transform: translateX(50%) rotate(90deg);
+  font-size: 17px;
+  color: white;
+}
+
 #type-text {
   font-size: 50px;
   color: #7971ea;
   padding-left: 14px;
 }
 
-#mainBG {
+.parallax-container {
   background: rgb(2, 0, 36);
   background: linear-gradient(355deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
+  /* Set a specific height */
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #home {
@@ -12169,19 +12210,17 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: left;
   height: auto; /* Allow the height to be dynamic */
-  padding: 20px; /* Add padding for better spacing */
   color: white;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: bold;
 }
 
 #aboutMePara {
   display: grid;
   place-items: center;
   align-content: center;
+  margin-top: 30px;
 }
 
 .hidden {
@@ -12208,11 +12247,6 @@ img {
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
-}
-
-#aboutBG {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(172deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
 }
 
 /* For the images to float right with clear background */
@@ -12267,13 +12301,8 @@ img {
   width: 50%;
 }
 
-#skillsBG {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(9deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
-}
-
 #andHeader {
-  color: #1cbd34;
+  color: #ffffff;
 }
 
 .scroll-container {
@@ -12281,6 +12310,19 @@ img {
   overflow: hidden;
   position: relative;
   flex: 1; /* Allow it to take up available space */
+}
+
+.scroll-container:hover .carousel-primary {
+  animation-play-state: paused;
+}
+
+.scroll-container::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba);
+  content: "";
+  z-index: 2;
 }
 
 .carousel-primary {
@@ -12293,6 +12335,7 @@ img {
   display: flex;
   flex-wrap: wrap; /* Enable wrapping */
   justify-content: center; /* Center the content horizontally */
+  animation: 10s slide infinite linear;
 }
 
 .carousel-primary img {
@@ -12315,6 +12358,14 @@ img {
   height: 600px;
 }
 
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
 /* Media Queries */
 @media (max-width: 768px) {
   .skills-container {
@@ -12443,9 +12494,14 @@ img {
   width: 100%; /* Make the text take up the full width of the parent */
 }
 
+@media (max-width: 768px) {
+  .fakeScreen {
+    animation: none;
+    -webkit-animation: none;
+  }
+}
 span {
   color: #fff;
-  font-weight: bold;
 }
 
 .line1 {
@@ -12596,11 +12652,6 @@ span {
     width: 17em;
   }
 }
-#projectsBG {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(355deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
-}
-
 #projects {
   height: 800px; /* Increase section height */
 }
@@ -12608,6 +12659,7 @@ span {
 #panelCards {
   display: flex;
   width: 90vw;
+  margin-top: 50px;
 }
 
 .panel {
@@ -12652,11 +12704,6 @@ span {
   height: 700px; /* Increase section height */
 }
 
-#contactBG {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(159deg, rgb(2, 0, 36) 0%, rgb(34, 40, 49) 59%, rgb(58, 49, 110) 100%);
-}
-
 #contactCenter {
   margin-top: 200px;
 }
@@ -12666,10 +12713,9 @@ span {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-#helloBTN {
+#contact #helloBTN {
   width: 10em;
   position: relative;
-  height: 3.5em;
   border: 3px ridge #7971ea;
   outline: none;
   background-color: transparent;
@@ -12681,7 +12727,7 @@ span {
   cursor: pointer;
 }
 
-#helloBTN::after {
+#contact #helloBTN::after {
   content: "";
   position: absolute;
   top: -10px;
@@ -12692,7 +12738,7 @@ span {
   transform-origin: center;
 }
 
-#helloBTN::before {
+#contact #helloBTN::before {
   content: "";
   transform-origin: center;
   position: absolute;
@@ -12703,42 +12749,11 @@ span {
   transition: 0.5s;
 }
 
-#helloBTN:hover::before, #helloBTN:hover::after {
+#contact #helloBTN:hover::before, #helloBTN:hover::after {
   transform: scale(0);
 }
 
-#helloBTN:hover {
+#contact #helloBTN:hover {
   box-shadow: inset 0px 0px 25px #7971ea;
-}
-
-.wave {
-  position: absolute;
-  height: 70px;
-  width: 100%;
-  background: #2c3e50;
-  bottom: 0;
-}
-
-.wave::before, .wave::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 100% 50%;
-}
-
-.wave::before {
-  width: 55%;
-  height: 109%;
-  background-color: #fff;
-  right: -1.5%;
-  top: 60%;
-}
-
-.wave::after {
-  width: 55%;
-  height: 100%;
-  background-color: #2c3e50;
-  left: -1.5%;
-  top: 40%;
 }
 /*# sourceMappingURL=style.css.map */
