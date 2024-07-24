@@ -54,6 +54,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
+    
+    overflow-x: hidden;
 }
 
 
@@ -220,37 +223,83 @@ bottom: 0;
   right: 2.5%;
   bottom: 25%;
   transform: translateX(50%) rotate(90deg);
-  font-size: 17px;
+  font-size: 1.07rem;
+  color: white;
+}
+
+#page-title {
+  position: fixed;
+  right: 2.5%;
+  bottom: 77%;
+  transform: translateX(50%) rotate(90deg);
+  font-size: 1.25rem;
   color: white;
 }
 
 
-//Header
-#type-text{
-  font-size: 50px;
-  color: $brand-third;
-  padding-left: 14px;
+/* Styles for tablets */
+@media (max-width: 768px) {
+  .myEmail {
+    right: 5%;
+    bottom: 20%;
+    font-size: 0.93rem;
+  }
+
+  #page-title {
+    right: 5%;
+    bottom: 75%;
+    font-size: 1.12rem;
+  }
+
+  #nav-dots::before, #nav-dots::after {
+    width: 1.5px;
+    height: 120px;
+    right: 125%;
+  }
+
 }
 
-//Backgrounds 
-// #mainBG {
-//   background: rgb(2,0,36);
-//   background: linear-gradient(355deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
-// }
+/* Styles for mobile phones */
+@media (max-width: 480px) {
+  .myEmail {
+    display: none;
+  }
+
+  #page-title {
+    display: none;
+  }
+
+  #nav-dots::before, #nav-dots::after {
+    width: 1px;
+    height: 100px;
+    right: 100%;
+  }
+}
+
+
+
+//Header
+#type-text{
+  font-size: 3.12rem;
+  color: $brand-third;
+  padding-left: 14px;
+  z-index: 1;
+}
 
 .parallax-container {
   background: rgb(2,0,36);
   background: linear-gradient(355deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
-
-    /* Set a specific height */
-    min-height: 500px;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+#titleHeader {
+  z-index: 1;
+}
+
 
 // About, Skills, Projects, Contact sections
 
@@ -269,28 +318,19 @@ bottom: 0;
 #fullStopHeader{
   color: palevioletred;
 }
-@media (max-width: 768px) {
-  #titleHeader h1 {
-      text-align: center;
-      font-size: 50px;
-  }
-}
+
+
+
 
 #headerIMG{
-  max-width: 100%;   /* Adjust as needed */
+  max-width: 50%;   /* Adjust as needed */
   height: auto;
   position: absolute; /* Position the image absolutely within the container */
-  top: 15%;           /* Position the image 25% from the top of the container */
-  left: 65%;          /* Position the image 60% from the left of the container */
-  transform: translate(-50%, -50%); /* Center alignment with offset */
-  z-index: 2;         /* Higher z-index to ensure the image is above the text */
+  top: 5%;           /* Position the image 25% from the top of the container */
+  left: 45%;          /* Position the image 60% from the left of the container */
+  transform: rotate(35deg); /* Center alignment with offset */
+  z-index: 0;         /* Higher z-index to ensure the image is above the text */
 
-}
-@media (max-width: 768px) {
-  #headerIMG {
-    height: 175px;
-    width: 175px;
-  }
 }
 
 @keyframes flickerAnimation {
@@ -314,22 +354,23 @@ bottom: 0;
   85%  { opacity: 0.9; }
   90%  { opacity: 1; }
   95%  { opacity: 0.4; }
-  100% { opacity: 1; }
+  100% { opacity: 0.05; }
 }
 
 @keyframes bounceAnimation {
-  0%   { transform: translateY(0); }
+  0%   { transform: translateY(0)rotate(35deg); }
   20%  { transform: translateY(-10px); }
   40%  { transform: translateY(0); }
-  60%  { transform: translateY(-5px); }
+  60%  { transform: translateY(-5px) rotate(-35deg); }
   80%  { transform: translateY(0); }
-  100% { transform: translateY(0); }
+  100% { transform: translateY(0) rotate(25deg); }
 }
 
 .animate-flicker {
   animation: flickerAnimation 2s forwards, bounceAnimation 2s forwards;
   animation-iteration-count: 1; /* Flicker and bounce once */
   animation-fill-mode: forwards; /* Retain final state */
+  
 }
 
 #about {
@@ -379,29 +420,6 @@ bottom: 0;
   transform: translateX(0);
 }
 
-// #aboutBG {
-//   background: rgb(2,0,36);
-//   background: linear-gradient(172deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
-// }
-
-/* For the images to float right with clear background */
-#gsdPic1, #gsdPic2 {
-  float: none;
-  margin-left: 0px; /* Space between the text and the image */
-  margin-bottom: 20px; /* Space between the images */
-  max-width: 350px; /* Adjust as needed */
-  display: inline-block;
-  background-color: transparent; /* Clear background */
-  border: none; /* Remove border */
-  border-radius: 40%;
-  padding: 0;
-}
-
-#gsdPic2 {
-  height: 300px;
-  width: 300px;
-}
-
 /* Clearfix to contain floated elements */
 #about::after {
   content: "";
@@ -409,27 +427,65 @@ bottom: 0;
   clear: both;
 }
 
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-  #gsdPic1, #gsdPic2 {
-    float:none;
-    display: inline-flex;
-    margin: 20px auto; /* Center images on small screens */
-    max-width: 100%; /* Make images responsive */
-    height: 150px;
-    width: 150px;
-  }
+.modal-content {
+  color: white;
+  background: $brand-secondary;
+  border-bottom: 1px solid #393e46;
 
-  /* Ensure the text content does not overlap with images */
-  #titleHeader h1 {
-  font-size: 50px;
-  margin-bottom: 10px;
-  }
-
-  #titleHeader p {
-    margin-bottom: 10px;
-  }
 }
+#modalBTN {
+  width: 10em;
+  margin: 0 auto;
+  position: relative;
+  border: 3px ridge $brand-third;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  
+}
+
+#modalBTN::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+#modalBTN::before {
+  content: "";
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  transition: 0.5s;
+}
+
+#modalBTN:hover::before, #modalBTN:hover::after {
+  transform: scale(0)
+}
+
+#modalBTN:hover {
+  box-shadow: inset 0px 0px 25px $brand-third;
+}
+
+.button-container {
+  margin-top: 50PX;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
 
 #skills { 
   height: 800px; /* Increase section height */
@@ -514,56 +570,7 @@ bottom: 0;
 
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-  .skills-container {
-      padding: 0 15px;
-  }
 
-  #skills {
-    max-width: 100%;
-  }
-
-  .skills-container h1 {
-    font-size: 50px;
-  }
-
-  .grid {
-      display: block;
-  }
-
-  .content {
-    width: 100%;
-    height: auto;
-  }
-  .carousel-primary {
-      top: 0;
-      left: 0;
-      width: 100%;
-      position: relative;
-  }
-
-  .carousel-primary img {
-      width: 75px; /* Adjust size for mobile */
-      height: 75px; /* Adjust size for mobile */
-  }
-  
-  .scroll-container {
-      height: auto;
-      overflow: auto;
-  }
-
-  #skillsIMG {
-    width: 100%;
-    height: auto;
-  }
-
-  #skillBlock{
-    width: 100%;
-    height: auto;
-  }
-
-}
 
 .fakeButtons {
   height: 10px;
@@ -614,19 +621,11 @@ bottom: 0;
 .fakeScreen p {
   position: relative;
   text-align: left;
-  font-size: 1.25em;
+  font-size: 1.6rem;
   font-family: monospace;
   white-space: normal;
   overflow: hidden;
-  width: 100%; /* Make the text take up the full width of the parent */
-}
-
-@media (max-width: 768px) {
-  .fakeScreen {
-    animation: none;
-    -webkit-animation: none;
-
-  }
+  width: 100%;
 }
 
 span {
@@ -796,7 +795,7 @@ span {
 // }
 
 #projects { 
-
+  margin-top: 50px;
   height: 800px; /* Increase section height */
 
 }
@@ -822,7 +821,7 @@ span {
 }
 
 .panel h3 {
-  font-size: 24px;
+  font-size: 1.5rem;
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -839,22 +838,12 @@ span {
   transition: opacity 0.3s ease-in 0.4s;
 }
 
-@media (max-width: 768px) {
-  #panel{
-    width: 200px;
-  }
-}
-
 #contact { 
   text-align: center;
   height: 700px; /* Increase section height */
 
 }
 
-// #contactBG {
-//   background: rgb(2,0,36);
-//   background: linear-gradient(159deg, rgba(2,0,36,1) 0%, rgba(34,40,49,1) 59%, rgba(58,49,110,1) 100%);
-// }
 
 #contactCenter {
   margin-top: 200px;
@@ -875,7 +864,7 @@ span {
   color: white;
   transition: 1s;
   border-radius: 0.3em;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
 }
@@ -911,3 +900,140 @@ span {
 }
 
 
+/* Styles for tablets */
+@media (max-width: 768px) {
+  
+  .wiggle {
+    font-size: 1.2rem; 
+  }
+  
+  
+  #headerIMG {
+    height: 175px;
+    width: 175px;
+    z-index: -0.5;
+  }
+
+  #type-text {
+    padding: 20px; 
+    font-size: 3.12rem;
+  }
+  #titleHeader h1 {
+  margin-bottom: 10px;
+  text-align: center;
+  }
+
+  #titleHeader p {
+    margin-bottom: 10px;
+  }
+
+
+  #panel{
+  width: 200px;
+  }
+
+
+  .skills-container {
+  padding: 0 15px;
+  }
+
+  #skills {
+  max-width: 100%;
+  }
+
+
+  .grid {
+  display: block;
+  }
+
+  .content {
+  width: 100%;
+  height: auto;
+  }
+
+  .carousel-primary {
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: relative;
+    flex-direction: row; /* Ensure images are still in a row */
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+  }
+
+  .carousel-primary img {
+    width: 75px; /* Adjust size for mobile */
+    height: 75px; /* Adjust size for mobile */
+  }
+
+  .scroll-container {
+    height: auto;
+    overflow: auto;
+  }
+
+  #skillsIMG {
+  width: 100%;
+  height: auto;
+  }
+
+  #skillBlock{
+  width: 100%;
+  height: auto;
+  }
+
+
+  .fakeScreen {
+    animation: none;
+    -webkit-animation: none;
+
+  }
+}
+
+/* Styles for mobile phones */
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #mainBG{
+    height: 600px;
+  }
+  .container {
+    padding-top: 10px;
+  }
+
+  #type-text {
+    padding: 20px; 
+    font-size: 1.2rem;
+  }
+  #titleHeader h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    }
+  
+  #titleHeader p {
+      margin-bottom: 10px;
+  }
+
+  .carousel-primary {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+
+  #skillBlock {
+    width: 100%; /* Make them full-width */
+    margin: 10 auto; /* Center them horizontally */
+    padding-bottom: 50px;
+  }
+
+  #projectsBG, #contactBG {
+    padding-top: 20px; /* Add padding to prevent overlap with previous section */
+    margin-top: 20px;
+}
+
+  .wiggle {
+  font-size: 1.2rem; 
+  max-width: 480px;;
+  }
+
+}

@@ -372,7 +372,20 @@ const VND = ((document, window) => {
 
 
  //NavBar Indicator 
- 
+ window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('.section');
+  const navText = document.getElementById('page-title');
+  let currentSection = 'Home';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 60) {
+      currentSection = section.getAttribute('id').charAt(0).toUpperCase() + section.getAttribute('id').slice(1);
+    }
+  });
+
+  navText.textContent = currentSection;
+});
 
 //Main "Hi I am James"
 
