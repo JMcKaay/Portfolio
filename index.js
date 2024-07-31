@@ -1,3 +1,21 @@
+//debounce
+
+function debounce(func, wait = 20, immediate = true) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    const later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+
 //Nav Bar
 /* vertical navigation dots */
 const VND = ((document, window) => {
@@ -292,26 +310,17 @@ const VND = ((document, window) => {
     },
 
     resize: {
-      resizeTimeout: null,
-
       hideOnSmallScreen(screenSize) {
         const navDots = document.getElementById('nav-dots');
-
+    
         window.screen.width <= screenSize
             ? is.visibleElement(navDots) && (navDots.style.display = 'none')
             : !is.visibleElement(navDots) && (navDots.style.display = 'flex');
       },
-
-      init({arg: screenSize}) {
-        // ignore resize events as long as an actualResizeHandler execution is in the queue
-        if (!this.resizeTimeout) {
-          this.resizeTimeout = setTimeout(() => {
-            // The actualResizeHandler will execute at a rate of 15fps
-            this.resizeTimeout = null;
-            this.hideOnSmallScreen(screenSize);
-          }, 66);
-        }
-      },
+    
+      init: debounce(function({arg: screenSize}) {
+        this.hideOnSmallScreen(screenSize);
+      }, 66),
     },
   };
   // ==============================================
@@ -372,7 +381,7 @@ const VND = ((document, window) => {
 
 
  //NavBar Indicator 
- window.addEventListener('scroll', function() {
+ window.addEventListener('scroll', debounce(function() {
   const sections = document.querySelectorAll('.section');
   const navText = document.getElementById('page-title');
   let currentSection = 'Home';
@@ -385,7 +394,7 @@ const VND = ((document, window) => {
   });
 
   navText.textContent = currentSection;
-});
+}));
 
 //Main "Hi I am James"
 
