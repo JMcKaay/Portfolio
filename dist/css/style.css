@@ -12072,32 +12072,57 @@ img {
 
 .myEmail {
   position: fixed;
-  right: 2.5%;
+  right: 2.8%;
   bottom: 25%;
   transform: translateX(50%) rotate(90deg);
-  font-size: 1.07rem;
+  font-size: 0.75rem;
   color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #page-title {
   position: fixed;
-  right: 2.5%;
-  bottom: 77%;
+  right: 2.8%;
+  bottom: 76%;
   transform: translateX(50%) rotate(90deg);
   font-size: 1.25rem;
   color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Styles for Large Screen Tablets */
+@media (max-width: 1024px) {
+  .myEmail, #page-title {
+    right: 5.5%;
+    width: 120px; /* Reduce width for smaller screens */
+  }
+  .myEmail {
+    bottom: 25%;
+    font-size: 1.2rem;
+  }
+  #page-title {
+    top: 20%;
+    font-size: 1.4rem;
+  }
+}
 /* Styles for tablets */
 @media (max-width: 768px) {
+  .myEmail, #page-title {
+    right: 5.5%;
+    width: 120px; /* Reduce width for smaller screens */
+  }
   .myEmail {
-    right: 5%;
-    bottom: 20%;
+    bottom: 25%;
     font-size: 0.93rem;
   }
   #page-title {
-    right: 5%;
-    bottom: 75%;
+    top: 20%;
     font-size: 1.12rem;
   }
   #nav-dots::before, #nav-dots::after {
@@ -12138,7 +12163,12 @@ img {
 }
 
 #titleHeader {
-  z-index: 1;
+  z-index: 10;
+}
+
+#titleHeader h1, #titleHeader .h1 {
+  z-index: 11;
+  position: relative; /* z-index only works on positioned elements */
 }
 
 #home {
@@ -12311,6 +12341,12 @@ img {
   color: white;
   background: #393e46;
   border-bottom: 1px solid #393e46;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  border: none; /* Remove borders completely */
 }
 
 #modalBTN {
@@ -12519,7 +12555,7 @@ img {
 .fakeScreen p {
   position: relative;
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-family: monospace;
   white-space: normal;
   overflow: hidden;
@@ -12679,6 +12715,7 @@ span {
   }
 }
 #projects {
+  box-sizing: border-box;
   margin-top: 50px;
   height: 700px; /* Increase section height */
 }
@@ -12727,7 +12764,7 @@ span {
 
 #contact {
   text-align: center;
-  height: 700px; /* Increase section height */
+  min-height: 110vh;
 }
 
 #contactCenter {
@@ -12795,7 +12832,10 @@ span {
     margin-right: auto;
   }
   .fakeScreen p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+  #contactCenter {
+    margin-top: 50%;
   }
 }
 /* Styles for tablets */
@@ -12830,7 +12870,21 @@ span {
     max-width: 100%;
   }
   #skills {
+    min-height: 100vh;
+    height: auto;
     max-width: 100%;
+  }
+  #projects {
+    min-height: 70vh;
+    height: auto;
+  }
+  #contact {
+    min-height: 100vh;
+  }
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
   }
   #skillBlock {
     width: 90%;
@@ -12933,6 +12987,9 @@ span {
   .panel {
     max-width: 400px;
     height: 300px;
+  }
+  h3, .h3 {
+    display: none;
   }
   .phoneWiggle {
     font-size: clamp(1rem, 3vw, 2rem);
