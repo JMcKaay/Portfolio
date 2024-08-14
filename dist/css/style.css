@@ -12516,42 +12516,8 @@ img {
   padding: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  -webkit-animation: fakeScreen 0.6s cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s both;
-  animation: fakeScreen 0.6s cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s both;
 }
 
-@-webkit-keyframes fakeScreen {
-  0% {
-    -webkit-transform: scale(2);
-    transform: scale(2);
-    -webkit-filter: blur(4px);
-    filter: blur(4px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes fakeScreen {
-  0% {
-    -webkit-transform: scale(2);
-    transform: scale(2);
-    -webkit-filter: blur(4px);
-    filter: blur(4px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
 .fakeScreen p {
   position: relative;
   text-align: left;
