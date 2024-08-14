@@ -12828,8 +12828,7 @@ span {
     margin-bottom: 10px;
   }
   #panel {
-    max-width: 400px;
-    height: 300px;
+    width: 200px;
   }
   .skills-container {
     padding: 0 15px;
