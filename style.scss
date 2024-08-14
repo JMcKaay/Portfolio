@@ -1015,7 +1015,8 @@ height: auto;
 
 
   #panel{
-    width: 200px;
+    max-width: 400px;
+    height: 300px;
   }
 
 
@@ -1153,7 +1154,7 @@ height: auto;
     overflow-x: auto; /* Allow horizontal scrolling */
     width: 100%; /* Full width */
     position: relative; /* Relative positioning */
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
   #skillBlock {
