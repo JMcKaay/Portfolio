@@ -480,8 +480,6 @@ const hiddenElements2 = document.querySelectorAll('.hidden2');
 hiddenElements2.forEach((el) => observer2.observe(el));
 
 
-//Skills Button aniamtion
-
 
 //Projects
 const panels = document.querySelectorAll('.panel')
