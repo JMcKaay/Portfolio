@@ -12186,6 +12186,16 @@ img {
   color: palevioletred;
 }
 
+#headerIMG {
+  max-width: 50%; /* Adjust as needed */
+  height: auto;
+  position: absolute; /* Position the image absolutely within the container */
+  top: 5%; /* Position the image 25% from the top of the container */
+  left: 45%; /* Position the image 60% from the left of the container */
+  transform: rotate(35deg); /* Center alignment with offset */
+  z-index: 0; /* Higher z-index to ensure the image is above the text */
+}
+
 @keyframes flickerAnimation {
   0% {
     opacity: 1;
