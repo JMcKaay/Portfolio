@@ -12208,7 +12208,7 @@ img {
 #headerIMG {
   max-width: 50%; /* Adjust as needed */
   height: auto;
-  position: absolute; /* Position the image absolutely within the container */
+  position: fixed; /* Position the image absolutely within the container */
   top: 5%; /* Position the image 25% from the top of the container */
   left: 45%; /* Position the image 60% from the left of the container */
   transform: rotate(35deg); /* Center alignment with offset */
@@ -12385,7 +12385,7 @@ img {
 
 #modalBTN::after {
   content: "";
-  position: absolute;
+  position: fixed;
   top: -10px;
   left: 3%;
   width: 95%;
@@ -12397,7 +12397,7 @@ img {
 #modalBTN::before {
   content: "";
   transform-origin: center;
-  position: absolute;
+  position: fixed;
   top: 80%;
   left: 3%;
   width: 95%;
@@ -12444,7 +12444,7 @@ img {
 }
 
 .scroll-container::before {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   background: linear-gradient(rgba);
@@ -12717,8 +12717,7 @@ span {
     margin-bottom: 10px;
   }
   #panel {
-    max-width: 400px;
-    height: 300px;
+    width: 200px;
   }
   .skills-container {
     padding: 0 15px;
