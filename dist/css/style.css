@@ -11904,8 +11904,8 @@ img {
 .container {
   width: 100%;
   max-width: 1200px;
-  padding: 0 15px;
   margin: 0 auto;
+  padding-left: 0%;
 }
 
 .navbar {
@@ -11923,7 +11923,6 @@ img {
   width: 100%;
   max-width: 100%;
   flex-wrap: wrap;
-  margin-left: 0;
   margin-right: 0;
   align-items: center;
 }
@@ -12162,7 +12161,6 @@ img {
 #type-text {
   font-size: clamp(1.5rem, 5vw, 3.12rem);
   color: #7971ea;
-  padding-left: 14px;
   z-index: 1;
 }
 
@@ -12195,6 +12193,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 3.1%;
 }
 
 #headerIdentify {
@@ -12314,6 +12313,10 @@ img {
   height: auto; /* Allow the height to be dynamic */
   color: white;
   font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+#aboutRow {
+  margin-left: none;
 }
 
 #aboutMePara {
@@ -12678,7 +12681,7 @@ span {
   #home {
     height: auto;
   }
-  #home, .about, #skills, #projects, #contact {
+  #home, #about, #skills, #projects, #contact {
     width: 90%;
     max-width: 90vw;
     margin-left: auto;
@@ -12848,6 +12851,22 @@ span {
   }
   .phoneWiggle {
     font-size: clamp(1rem, 3vw, 2rem);
+  }
+}
+@media (orientation: landscape) {
+  .myEmail, #page-title {
+    display: none;
+  }
+  #nav-dots::before, #nav-dots::after {
+    display: none;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .myEmail, #page-title {
+    display: none;
+  }
+  #nav-dots::before, #nav-dots::after {
+    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */
