@@ -1064,3 +1064,23 @@ height: auto;
 }
 
 }
+
+@media (orientation: landscape) {
+  .myEmail, #page-title {
+    display: none;
+  }
+
+  #nav-dots::before, #nav-dots::after {
+    display: none;
+  }
+
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .myEmail, #page-title {
+    display: none;
+  }
+
+  #nav-dots::before, #nav-dots::after {
+    display: none;
+  }
+}
