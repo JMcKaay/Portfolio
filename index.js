@@ -1,5 +1,4 @@
 //debounce
-
 function debounce(func, wait = 20, immediate = true) {
   let timeout;
   return function() {
@@ -15,48 +14,32 @@ function debounce(func, wait = 20, immediate = true) {
   };
 }
 
-
 //Nav Bar
 /* vertical navigation dots */
 const VND = ((document, window) => {
   'use strict';
 
-  /* Render Methods
-   * navDots - render vertical navigation dots in BODY
-   * ID fod each dot - nav-toSection#${indexOfSection}
-   * Class - nav__dot
-   */
   const render = {
     navDots(sections) {
       const listOfdots = sections.map((element, index) =>
-          `<li id="nav-toSection#${index}" class="nav__dot"></li>`).join('\r\n');
+          `<li id="nav-toSection#${index}" class="nav__dot" data-section="${element.id}"></li>`).join('\r\n');
 
       document.body.innerHTML += `<nav id="nav-dots"><ul>${listOfdots}</ul></nav>`;
     },
   };
-  // ==============================================
 
-  /* Normalize Methods
-   * positionTop - normalized scrollTop value based on header height
-   */
   const normalized = {
-    // normalized scroll value based on header height
     positionTop(positionTop) {
       return positionTop - getSize.headerHeight();
     },
   };
-  // ==============================================
 
-  /* Validate Methods
-   * scrollThrowSection -  return boolean is scroll top going throw section
-   * visibleElement - return boolean is visible element or not
-   */
   const is = {
-    scrollThrowSection(positionScroll) {
+    scrollThrowSection(positionScroll, threshold) {
       const {rangeY: {value}} = position;
 
-      return positionScroll >= value.start &&
-          positionScroll < value.end;
+      return positionScroll >= value.start - threshold &&
+             positionScroll < value.end + threshold;
     },
 
     visibleElement(element) {
@@ -66,7 +49,6 @@ const VND = ((document, window) => {
       return styleDisplay !== 'none' && styleVisibility !== 'hidden';
     },
   };
-  // ==============================================
 
   const getSize = {
     headerHeight() {
@@ -85,12 +67,7 @@ const VND = ((document, window) => {
       return element.offsetHeight + marginBottom;
     },
   };
-  // ==============================================
 
-  /* Scrolling Methods
-   * top - scroll to value
-   * stop - run callBack when scrolling stop
-   */
   const scroll = {
     top(value) {
       scrollBy({
@@ -116,12 +93,7 @@ const VND = ((document, window) => {
       isScrolling();
     },
   };
-  // ==============================================
 
-  /* Customized Keyboard Methods
-   * 33 - PagUp Key
-   * 34 - PageDown Key
-   */
   const keyboard = {
     getKeyCode(event) {
       return event.which || event.keyCode;
@@ -141,15 +113,7 @@ const VND = ((document, window) => {
       scroll.top(nextPositionTop);
     },
   };
-  // ==============================================
 
-  /*  Dom Methods
-   * getAllElements - get array elements
-   * containClass - check if element contain class (true/false)
-   * addClass - add class to element
-   * removeClass - find element with class between elements and remove that class
-   * toggleCls - toggle class remove from Elements add to element
-   */
   const dom = {
     getAllElements(cls) {
       const listOfElements = document.querySelectorAll(`.${cls}`);
@@ -185,15 +149,7 @@ const VND = ((document, window) => {
       this.toggleCls(navDots, nextDot, 'nav__dot--active');
     },
   };
-  // ==============================================
 
-  /*
-   * rangeY - set & get range Y of element
-   * scrollThrow - return true or false if scroll going throw range Y
-   * getTop - position of top element
-   * getPrevTop - distances from previous section to top
-   * getNextTop - distances from next section to top
-   */
   const position = {
     rangeY: {
       range: {
@@ -211,17 +167,17 @@ const VND = ((document, window) => {
       get value() {
         return this.range;
       },
-
     },
 
     scrollThrow(section) {
       const positionScroll = Math.ceil(pageYOffset + getSize.headerHeight());
+      const threshold = Math.min(50, window.innerHeight * 0.1);
 
-      if (!is.scrollThrowSection(positionScroll)) {
+      if (!is.scrollThrowSection(positionScroll, threshold)) {
         this.rangeY.value = section;
       }
 
-      return is.scrollThrowSection(positionScroll);
+      return is.scrollThrowSection(positionScroll, threshold);
     },
 
     getClientTop(element) {
@@ -257,14 +213,7 @@ const VND = ((document, window) => {
       return normalized.positionTop(nextPositionTop);
     },
   };
-  // ==============================================
 
-  /*
-   * navDots - handle scroll & toggle class when click on dots
-   * pgUpDownKeys - handle scroll when press keys PgUpp PgDown
-   * scrolling - handle scroll & toggle class when use scroll
-   * resize - handle hide dots on small screen
-   */
   const handleListener = {
     listener({element, event, callBack, arg}) {
       element.addEventListener(event, (evn) => callBack({evn, arg}));
@@ -297,13 +246,23 @@ const VND = ((document, window) => {
       indexOfSection: null,
 
       init({arg: sections}) {
-        if (!position.scrollThrow(this.currentSection || sections[0])) {
-          this.currentSection = sections.find((section, index) => {
-            if (position.scrollThrow(section)) {
-              this.indexOfSection = index;
-              return true;
-            }
-          });
+        const currentScrollPosition = window.pageYOffset;
+        let closestSection = sections[0];
+        let closestDistance = Infinity;
+        let closestIndex = 0;
+
+        sections.forEach((section, index) => {
+          const distance = Math.abs(section.offsetTop - currentScrollPosition);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestSection = section;
+            closestIndex = index;
+          }
+        });
+
+        if (this.currentSection !== closestSection) {
+          this.currentSection = closestSection;
+          this.indexOfSection = closestIndex;
           dom.toggleDots(this.indexOfSection);
         }
       },
@@ -323,7 +282,6 @@ const VND = ((document, window) => {
       }, 66),
     },
   };
-  // ==============================================
 
   const init = function({cls, hideOnScreenLess = 0} = {}) {
     const {
@@ -374,30 +332,53 @@ const VND = ((document, window) => {
   };
 })(document, window);
 
-  VND.init({
-    cls: 'js-navDots',
-    hideOnScreenLess: 640,
-  })
+VND.init({
+  cls: 'js-navDots',
+  hideOnScreenLess: 640,
+})
 
-
- //NavBar Indicator 
- window.addEventListener('scroll', debounce(function() {
+//NavBar Indicator 
+window.addEventListener('scroll', debounce(function() {
   const sections = document.querySelectorAll('.section');
   const navText = document.getElementById('page-title');
-  let currentSection = 'Home';
+  const navDots = document.querySelectorAll('.nav__dot');
+  const currentScrollPosition = window.pageYOffset;
+  let closestSection = sections[0];
+  let closestDistance = Infinity;
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    if (pageYOffset >= sectionTop - 60) {
-      currentSection = section.getAttribute('id').charAt(0).toUpperCase() + section.getAttribute('id').slice(1);
+  sections.forEach((section) => {
+    const distance = Math.abs(section.offsetTop - currentScrollPosition);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestSection = section;
     }
   });
 
+  const currentSection = closestSection.getAttribute('id').charAt(0).toUpperCase() + closestSection.getAttribute('id').slice(1);
   navText.textContent = currentSection;
+
+  // Update active dot
+  navDots.forEach(dot => {
+    if (dot.getAttribute('data-section') === closestSection.id) {
+      dot.classList.add('nav__dot--active');
+    } else {
+      dot.classList.remove('nav__dot--active');
+    }
+  });
 }));
 
-//Main "Hi I am James"
+// Optionally, add click events to the nav dots for smooth scrolling:
+document.getElementById('nav-dots').addEventListener('click', function(e) {
+  if (e.target.classList.contains('nav__dot')) {
+    const targetId = e.target.getAttribute('data-section');
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
 
+//Main "Hi I am James"
 async function init () {
   const node = document.querySelector("#type-text")
   
@@ -415,9 +396,7 @@ async function init () {
   }
 }
 
-
 // Source code 🚩
-
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 
 class TypeAsync extends HTMLSpanElement {
@@ -443,14 +422,9 @@ class TypeAsync extends HTMLSpanElement {
 
 customElements.define('type-async', TypeAsync, { extends: 'span' })
 
-
 init()
 
-
-
-
 //Layout Animation (About)
-
 const observer = new IntersectionObserver ((entries) => {
   entries.forEach((entry) => {
     console.log(entry)
@@ -479,8 +453,6 @@ const observer2 = new IntersectionObserver ((entries) => {
 const hiddenElements2 = document.querySelectorAll('.hidden2');
 hiddenElements2.forEach((el) => observer2.observe(el));
 
-
-
 //Projects
 const panels = document.querySelectorAll('.panel')
 
@@ -496,6 +468,4 @@ function removeActiveClasses() {
         panel.classList.remove('active')
     })
 }
-
-
 
