@@ -539,24 +539,26 @@ bottom: 0;
 
 #modalBTN::after {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -10px;
   left: 3%;
   width: 95%;
   height: 40%;
   transition: 0.5s;
   transform-origin: center;
+  pointer-events: none;
 }
 
 #modalBTN::before {
   content: "";
   transform-origin: center;
-  position: fixed;
+  position: absolute;
   top: 80%;
   left: 3%;
   width: 95%;
   height: 40%;
   transition: 0.5s;
+  pointer-events: none;
 }
 
 #modalBTN:hover::before, #modalBTN:hover::after {
