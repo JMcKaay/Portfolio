@@ -783,6 +783,7 @@ span {
 #contact { 
   text-align: center;
   min-height: 110vh;
+  z-index: 2;
 
 }
 
@@ -839,6 +840,18 @@ span {
 
 #contact #helloBTN:hover {
   box-shadow: inset 0px 0px 25px $brand-third;
+}
+
+.gitHubLink {
+  position: relative;
+  z-index: 6;
+  pointer-events: all;
+  color: inherit;
+  text-decoration: underline;
+  
+  &:hover {
+    color: $brand-third;
+  }
 }
 
 /* Styles for Large Screen Tablets */

@@ -12624,6 +12624,7 @@ span {
 #contact {
   text-align: center;
   min-height: 110vh;
+  z-index: 2;
 }
 
 #contactCenter {
@@ -12677,6 +12678,17 @@ span {
 
 #contact #helloBTN:hover {
   box-shadow: inset 0px 0px 25px #7971ea;
+}
+
+.gitHubLink {
+  position: relative;
+  z-index: 6;
+  pointer-events: all;
+  color: inherit;
+  text-decoration: underline;
+}
+.gitHubLink:hover {
+  color: #7971ea;
 }
 
 /* Styles for Large Screen Tablets */
